@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "[YOUR LAMBDA IAM ROLE]"
+            },
+            "Action": [
+                "ses:SendEmail",
+                "ses:SendRawEmail"
+            ],
+            "Resource": "[YOUR SES ARN]",
+            "Condition": {
+                "ForAllValues:StringEquals": {
+                    "ses:Recipients": "to_address@example.com"
+                },
+                "StringEquals": {
+                    "ses:FromAddress": "from_address@example.com"
+                }
+            }
+        }
+    ]
+}
